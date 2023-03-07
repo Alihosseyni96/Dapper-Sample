@@ -9,6 +9,7 @@ namespace Dapper_Sample.Services
         Task<FuncResult> DeleteStudentbyId(int id);
 
         Task<FuncResult> List();
-
+        Task<FuncResult> StudentListBySp();
+        Task<FuncResult> GetStudentsByAddressSearchSp(string searchKey);
     }
 }

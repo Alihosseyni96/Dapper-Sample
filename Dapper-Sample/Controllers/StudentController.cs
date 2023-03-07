@@ -43,5 +43,19 @@ namespace Dapper_Sample.Controllers
             return Ok(res);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> StudentListBySp()
+        {
+            var res = await _studentServices.StudentListBySp();
+            return Ok(res);
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetUserBySearchAddress([FromQuery] string searchKey)
+        {
+            var res = await _studentServices.GetStudentsByAddressSearchSp(searchKey);
+            return Ok(res);
+        }
     }
 }

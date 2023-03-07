@@ -86,5 +86,36 @@ namespace Dapper_Sample.Services
             };
         }
 
+
+
+        // GET DATA WITH USING SP 
+        public async Task<FuncResult> StudentListBySp()
+        {
+            var sp = "EXEC GetAllStudents";
+            _db.Open();
+            var res = await _db.QueryAsync<Student>(sp);
+            _db.Close() ;
+
+            return new FuncResult()
+            {
+                Entity = res,
+                Status = Status.Ok,
+            };
+
+        }
+
+        public async Task<FuncResult> GetStudentsByAddressSearchSp(string searchKey)
+        {
+            var sp = $"EXEC SearchAddress {@searchKey}";
+            _db.Open();
+            var res = await _db.QueryAsync(sp);
+            _db.Close();
+            return new FuncResult()
+            {
+                Entity = res,
+                Status = Status.Ok,
+            };
+
+        }
     }
 }
